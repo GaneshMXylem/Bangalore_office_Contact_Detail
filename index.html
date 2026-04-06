@@ -6,10 +6,13 @@
 <title>Xylem Bangalore Contacts</title>
 
 <style>
-    body {
+    body, html {
         font-family: Arial, sans-serif;
         margin: 0;
         background: #f4f6f8;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
     }
 
     header {
@@ -19,21 +22,12 @@
         border-bottom: 2px solid #0078D4;
     }
 
-    header img {
-        max-width: 180px;
-        height: auto;
-    }
+    header img { max-width: 180px; height: auto; }
+    header h2 { margin-top: 10px; color: #0078D4; }
 
-    header h2 {
-        margin-top: 10px;
-        color: #0078D4;
-    }
+    .container { padding: 15px; flex: 1; }
 
-    .container {
-        padding: 15px;
-    }
-
-    .section {
+    .section, .sub-section {
         background: white;
         margin-bottom: 10px;
         border-radius: 8px;
@@ -41,101 +35,67 @@
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    .section-header {
+    .section-header, .sub-section-header {
         padding: 15px;
         background: #e6f0fa;
         cursor: pointer;
         font-weight: bold;
         display: flex;
         align-items: center;
+        gap: 8px;
+        user-select: none;
     }
 
-    .chevron {
-        display: inline-block;
-        transition: transform 0.3s;
-        margin-right: 8px;
-    }
+    .sub-section-header { margin-left: 20px; }
 
-    .section-content {
-        max-height: 0;
-        overflow: hidden;
-        padding: 0 15px;
-        transition: max-height 0.3s ease, padding 0.3s ease;
-    }
+    .chevron { display: inline-block; transition: transform 0.3s; }
 
-    .section-content.open {
-        padding: 10px 15px;
-    }
+    /* Instead of max-height, use display none/block for sub-section */
+    .section-content { display: none; padding: 10px 15px; }
+    .section-content.open { display: block; }
 
-    .contact {
-        margin-bottom: 10px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #ddd;
-    }
+    .sub-section-content { display: none; padding: 10px 15px; margin-left: 20px; }
+    .sub-section-content.open { display: block; }
 
-    a {
-        text-decoration: none;
-        color: #0078D4;
-    }
+    .contact { margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #ddd; }
 
-    a:hover {
-        text-decoration: underline;
-    }
+    a { text-decoration: none; color: #0078D4; }
+    a:hover { text-decoration: underline; }
 
-    .action-btn {
-        display: inline-block;
-        padding: 6px 12px;
-        background: #0078D4;
-        color: white;
-        border-radius: 4px;
-        text-decoration: none;
-        font-weight: bold;
-        margin-top: 5px;
-    }
+    .action-btn { display: inline-block; padding: 6px 12px; background: #0078D4; color: white; border-radius: 4px; text-decoration: none; font-weight: bold; margin-top: 5px; }
+    .action-btn:hover { background: #005a9e; }
 
-    .action-btn:hover {
-        background: #005a9e;
-    }
-
-    /* Indent Pantry to appear visually under Admin */
-    #pantry {
-        margin-left: 20px;
-        border-left: 2px dashed #0078D4;
-        padding-left: 10px;
-    }
+    .footer-image img { width: 100%; height: auto; display: block; margin-top: 20px; border-top-left-radius: 8px; border-top-right-radius: 8px; }
 </style>
 
 <script>
 function toggleSection(id) {
-    var content = document.getElementById(id);
-    var header = content.previousElementSibling;
-    var chevron = header.querySelector('.chevron');
-    if (content.style.maxHeight) {
-        content.style.maxHeight = null;
+    const content = document.getElementById(id);
+    const header = content.previousElementSibling;
+    const chevron = header.querySelector('.chevron');
+
+    if(content.classList.contains('open')){
         content.classList.remove('open');
         chevron.style.transform = 'rotate(0deg)';
     } else {
-        content.style.maxHeight = content.scrollHeight + "px";
         content.classList.add('open');
         chevron.style.transform = 'rotate(90deg)';
     }
 }
 
 function openTeams(email) {
-    window.location.href = "msteams:/l/chat/0/0?users=" + email;
-    setTimeout(function () {
-        window.location.href = "mailto:" + email;
-    }, 1500);
+    const teamsUrl = "msteams:/l/chat/0/0?users=" + email;
+    const mailUrl = "mailto:" + email;
+    window.location.href = teamsUrl;
+    setTimeout(() => { window.location.href = mailUrl; }, 2000);
 }
 
 function openAppOrPlayStore(packageName, fallbackUrl) {
-    window.location = "intent://#Intent;package=" + packageName + ";scheme=https;end";
-    setTimeout(function() {
-        window.location = fallbackUrl;
-    }, 1500);
+    const intentUrl = "intent://#Intent;package=" + packageName + ";scheme=https;end";
+    window.location.href = intentUrl;
+    setTimeout(() => { window.location.href = fallbackUrl; }, 2000);
 }
 </script>
-
 </head>
 <body>
 
@@ -146,7 +106,7 @@ function openAppOrPlayStore(packageName, fallbackUrl) {
 
 <div class="container">
 
-    <!-- ADMIN -->
+    <!-- ADMIN Section -->
     <div class="section">
         <div class="section-header" onclick="toggleSection('admin')">
             <span class="chevron">▶</span> 🏢 Admin
@@ -162,27 +122,27 @@ function openAppOrPlayStore(packageName, fallbackUrl) {
                 📞 <a href="tel:+918066794000">+918066794000</a><br>
                 ✉️ <a href="#" onclick="openTeams('bangalore.security@xylem.com')">bangalore.security@xylem.com</a>
             </div>
+
+            <!-- Pantry Sub-section inside Admin -->
+            <div class="sub-section">
+                <div class="sub-section-header" onclick="toggleSection('pantry')">
+                    <span class="chevron">▶</span> 🍴 Pantry
+                </div>
+                <div class="sub-section-content" id="pantry">
+                    <div class="contact">
+                        <b>Guru</b><br>
+                        📞 <a href="tel:+919876543210">+919876543210</a>
+                    </div>
+                    <div class="contact">
+                        <b>Rajasekhar</b><br>
+                        📞 <a href="tel:+919812345678">+919812345678</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- PANTRY as separate collapsible section -->
-    <div class="section">
-        <div class="section-header" onclick="toggleSection('pantry')">
-            <span class="chevron">▶</span> 🍴 Pantry
-        </div>
-        <div class="section-content" id="pantry">
-            <div class="contact">
-                <b>Guru</b><br>
-                📞 <a href="tel:+919876543210">+919876543210</a>
-            </div>
-            <div class="contact">
-                <b>Rajasekhar</b><br>
-                📞 <a href="tel:+919812345678">+919812345678</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- IT -->
+    <!-- IT Section -->
     <div class="section">
         <div class="section-header" onclick="toggleSection('it')">
             <span class="chevron">▶</span> 💻 IT
@@ -201,7 +161,7 @@ function openAppOrPlayStore(packageName, fallbackUrl) {
         </div>
     </div>
 
-    <!-- EHS -->
+    <!-- EHS Section -->
     <div class="section">
         <div class="section-header" onclick="toggleSection('ehs')">
             <span class="chevron">▶</span> 🦺 EHS
@@ -235,6 +195,11 @@ function openAppOrPlayStore(packageName, fallbackUrl) {
         </div>
     </div>
 
+</div>
+
+<!-- Footer Office Image -->
+<div class="footer-image">
+    <img src="office.jpg" alt="Office Image">
 </div>
 
 </body>
