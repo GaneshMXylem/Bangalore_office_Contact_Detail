@@ -46,10 +46,24 @@
         background: #e6f0fa;
         cursor: pointer;
         font-weight: bold;
+        display: flex;
+        align-items: center;
+    }
+
+    .chevron {
+        display: inline-block;
+        transition: transform 0.3s;
+        margin-right: 8px;
     }
 
     .section-content {
-        display: none;
+        max-height: 0;
+        overflow: hidden;
+        padding: 0 15px;
+        transition: max-height 0.3s ease;
+    }
+
+    .section-content.open {
         padding: 10px 15px;
     }
 
@@ -68,28 +82,52 @@
         text-decoration: underline;
     }
 
-    .links {
-        background: white;
-        padding: 15px;
-        border-radius: 8px;
-        margin-top: 15px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    .action-btn {
+        display: inline-block;
+        padding: 6px 12px;
+        background: #0078D4;
+        color: white;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .action-btn:hover {
+        background: #005a9e;
     }
 </style>
 
 <script>
+// Toggle collapsible sections with chevron rotation
 function toggleSection(id) {
     var content = document.getElementById(id);
-    content.style.display = content.style.display === "block" ? "none" : "block";
+    var header = content.previousElementSibling;
+    var chevron = header.querySelector('.chevron');
+    if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+        content.classList.remove('open');
+        chevron.style.transform = 'rotate(0deg)';
+    } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        content.classList.add('open');
+        chevron.style.transform = 'rotate(90deg)';
+    }
 }
 
-// Open Teams chat if possible
+// Open Teams chat if possible, fallback to email
 function openTeams(email) {
     window.location.href = "msteams:/l/chat/0/0?users=" + email;
-
-    // fallback to email
     setTimeout(function () {
         window.location.href = "mailto:" + email;
+    }, 1500);
+}
+
+// Open App or fallback to Play Store
+function openAppOrPlayStore(packageName, fallbackUrl) {
+    window.location = "intent://#Intent;package=" + packageName + ";scheme=https;end";
+    setTimeout(function() {
+        window.location = fallbackUrl;
     }, 1500);
 }
 </script>
@@ -99,7 +137,6 @@ function openTeams(email) {
 <body>
 
 <header>
-    <!-- Add your logo file in same folder and name it logo.png -->
     <img src="logo.png" alt="Company Logo">
     <h2>Xylem Bangalore Office Contacts</h2>
 </header>
@@ -109,83 +146,73 @@ function openTeams(email) {
     <!-- ADMIN -->
     <div class="section">
         <div class="section-header" onclick="toggleSection('admin')">
-            Admin Department
+            <span class="chevron">▶</span> Admin Department
         </div>
         <div class="section-content" id="admin">
-
             <div class="contact">
                 <b>G. Priya</b><br>
                 📞 <a href="tel:+916358179131">+916358179131</a><br>
-                📧 <a href="#" onclick="openTeams('Priya.G@xylem.com')">Priya.G@xylem.com</a>
+                ✉️ <a href="#" onclick="openTeams('Priya.G@xylem.com')">Priya.G@xylem.com</a>
             </div>
-
             <div class="contact">
                 <b>Security Bangalore</b><br>
                 📞 <a href="tel:+918066794000">+918066794000</a><br>
-                📧 <a href="#" onclick="openTeams('bangalore.security@xylem.com')">bangalore.security@xylem.com</a>
+                ✉️ <a href="#" onclick="openTeams('bangalore.security@xylem.com')">bangalore.security@xylem.com</a>
             </div>
-
         </div>
     </div>
 
     <!-- EHS -->
     <div class="section">
         <div class="section-header" onclick="toggleSection('ehs')">
-            EHS Department
+            <span class="chevron">▶</span> EHS Department
         </div>
         <div class="section-content" id="ehs">
-
             <div class="contact">
                 <b>Hotnalli Kumar</b><br>
                 📞 <a href="tel:+917486037211">+917486037211</a><br>
-                📧 <a href="#" onclick="openTeams('Kumar.Hotnalli@xylem.com')">Kumar.Hotnalli@xylem.com</a>
-            </div>
-
-            <div class="contact">
-                <b>EHS 2</b><br>
-                📞 <a href="tel:+919955667788">+91 9955667788</a><br>
-                📧 <a href="#" onclick="openTeams('ehs2@company.com')">ehs2@company.com</a>
-            </div>
-
+                ✉️ <a href="#" onclick="openTeams('Kumar.Hotnalli@xylem.com')">Kumar.Hotnalli@xylem.com</a>
+            </div>            
         </div>
     </div>
 
     <!-- IT -->
     <div class="section">
         <div class="section-header" onclick="toggleSection('it')">
-            IT Department
+            <span class="chevron">▶</span> IT Department
         </div>
         <div class="section-content" id="it">
-
             <div class="contact">
                 <b>K. Harish Kumar</b><br>
                 📞 <a href="tel:+917227979760">+917227979760</a><br>
-                📧 <a href="#" onclick="openTeams('Harish.Kumar.K@xylem.com')">Harish.Kumar.K@xylem.com</a>
+                ✉️ <a href="#" onclick="openTeams('Harish.Kumar.K@xylem.com')">Harish.Kumar.K@xylem.com</a>
             </div>
-
             <div class="contact">
                 <b>J. Bharath Kumar</b><br>
                 📞 <a href="tel:+917486023960">+917486023960</a><br>
-                📧 <a href="#" onclick="openTeams('Bharath.Kumar.J@xylem.com')">Bharath.Kumar.J@xylem.com</a>
+                ✉️ <a href="#" onclick="openTeams('Bharath.Kumar.J@xylem.com')">Bharath.Kumar.J@xylem.com</a>
             </div>
-
         </div>
     </div>
 
     <!-- EXTRA LINKS -->
-    <div class="links">
-        <h3>Xylem Bangalore Office Dependent Links</h3>
-
-        🚖 Taxi Booking:<br>
-        <a href="https://your-taxi-booking-link.com" target="_blank">
-            Book Taxi
-        </a>
-        <br><br>
-
-        🍔 Lunch & Snacks Order:<br>
-        <a href="https://your-food-order-link.com" target="_blank">
-            Order Food
-        </a>
+    <div class="section">
+        <div class="section-header" onclick="toggleSection('links')">
+            <span class="chevron">▶</span> Xylem Bangalore Office Dependent Links
+        </div>
+        <div class="section-content" id="links">
+            <div class="contact">
+                🚖 Taxi Booking:<br>
+                <a href="https://your-taxi-booking-link.com" class="action-btn" target="_blank">Book Taxi</a>
+            </div>
+            <div class="contact">
+                🍔 Lunch & Snacks Order:<br>
+                <a href="#" class="action-btn"
+                   onclick="openAppOrPlayStore('com.swiggy.client','https://play.google.com/store/apps/details?id=com.swiggy.client')">
+                   Order Food
+                </a>
+            </div>
+        </div>
     </div>
 
 </div>
