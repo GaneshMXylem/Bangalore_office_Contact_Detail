@@ -60,7 +60,7 @@
         max-height: 0;
         overflow: hidden;
         padding: 0 15px;
-        transition: max-height 0.3s ease;
+        transition: max-height 0.3s ease, padding 0.3s ease;
     }
 
     .section-content.open {
@@ -97,8 +97,8 @@
         background: #005a9e;
     }
 
-    /* Nested section for Pantry */
-    .nested-section {
+    /* Indent Pantry to appear visually under Admin */
+    #pantry {
         margin-left: 20px;
         border-left: 2px dashed #0078D4;
         padding-left: 10px;
@@ -162,22 +162,22 @@ function openAppOrPlayStore(packageName, fallbackUrl) {
                 📞 <a href="tel:+918066794000">+918066794000</a><br>
                 ✉️ <a href="#" onclick="openTeams('bangalore.security@xylem.com')">bangalore.security@xylem.com</a>
             </div>
+        </div>
+    </div>
 
-            <!-- Pantry Nested Section -->
-            <div class="nested-section section">
-                <div class="section-header" onclick="toggleSection('pantry')">
-                    <span class="chevron">▶</span> 🍴 Pantry
-                </div>
-                <div class="section-content" id="pantry">
-                    <div class="contact">
-                        <b>Guru</b><br>
-                        📞 <a href="tel:+919876543210">+919876543210</a>
-                    </div>
-                    <div class="contact">
-                        <b>Rajasekhar</b><br>
-                        📞 <a href="tel:+919812345678">+919812345678</a>
-                    </div>
-                </div>
+    <!-- PANTRY as separate collapsible section -->
+    <div class="section">
+        <div class="section-header" onclick="toggleSection('pantry')">
+            <span class="chevron">▶</span> 🍴 Pantry
+        </div>
+        <div class="section-content" id="pantry">
+            <div class="contact">
+                <b>Guru</b><br>
+                📞 <a href="tel:+919876543210">+919876543210</a>
+            </div>
+            <div class="contact">
+                <b>Rajasekhar</b><br>
+                📞 <a href="tel:+919812345678">+919812345678</a>
             </div>
         </div>
     </div>
