@@ -96,10 +96,16 @@
     .action-btn:hover {
         background: #005a9e;
     }
+
+    /* Nested section for Pantry */
+    .nested-section {
+        margin-left: 20px;
+        border-left: 2px dashed #0078D4;
+        padding-left: 10px;
+    }
 </style>
 
 <script>
-// Toggle collapsible sections with chevron rotation
 function toggleSection(id) {
     var content = document.getElementById(id);
     var header = content.previousElementSibling;
@@ -115,7 +121,6 @@ function toggleSection(id) {
     }
 }
 
-// Open Teams chat if possible, fallback to email
 function openTeams(email) {
     window.location.href = "msteams:/l/chat/0/0?users=" + email;
     setTimeout(function () {
@@ -123,7 +128,6 @@ function openTeams(email) {
     }, 1500);
 }
 
-// Open App or fallback to Play Store
 function openAppOrPlayStore(packageName, fallbackUrl) {
     window.location = "intent://#Intent;package=" + packageName + ";scheme=https;end";
     setTimeout(function() {
@@ -133,7 +137,6 @@ function openAppOrPlayStore(packageName, fallbackUrl) {
 </script>
 
 </head>
-
 <body>
 
 <header>
@@ -146,7 +149,7 @@ function openAppOrPlayStore(packageName, fallbackUrl) {
     <!-- ADMIN -->
     <div class="section">
         <div class="section-header" onclick="toggleSection('admin')">
-            <span class="chevron">▶</span> Admin
+            <span class="chevron">▶</span> 🏢 Admin
         </div>
         <div class="section-content" id="admin">
             <div class="contact">
@@ -159,14 +162,30 @@ function openAppOrPlayStore(packageName, fallbackUrl) {
                 📞 <a href="tel:+918066794000">+918066794000</a><br>
                 ✉️ <a href="#" onclick="openTeams('bangalore.security@xylem.com')">bangalore.security@xylem.com</a>
             </div>
+
+            <!-- Pantry Nested Section -->
+            <div class="nested-section section">
+                <div class="section-header" onclick="toggleSection('pantry')">
+                    <span class="chevron">▶</span> 🍴 Pantry
+                </div>
+                <div class="section-content" id="pantry">
+                    <div class="contact">
+                        <b>Guru</b><br>
+                        📞 <a href="tel:+919876543210">+919876543210</a>
+                    </div>
+                    <div class="contact">
+                        <b>Rajasekhar</b><br>
+                        📞 <a href="tel:+919812345678">+919812345678</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    
     <!-- IT -->
     <div class="section">
         <div class="section-header" onclick="toggleSection('it')">
-            <span class="chevron">▶</span> IT
+            <span class="chevron">▶</span> 💻 IT
         </div>
         <div class="section-content" id="it">
             <div class="contact">
@@ -185,7 +204,7 @@ function openAppOrPlayStore(packageName, fallbackUrl) {
     <!-- EHS -->
     <div class="section">
         <div class="section-header" onclick="toggleSection('ehs')">
-            <span class="chevron">▶</span> EHS
+            <span class="chevron">▶</span> 🦺 EHS
         </div>
         <div class="section-content" id="ehs">
             <div class="contact">
@@ -196,11 +215,10 @@ function openAppOrPlayStore(packageName, fallbackUrl) {
         </div>
     </div>
 
-
-    <!-- EXTRA LINKS -->
+    <!-- Employee Quick Links -->
     <div class="section">
         <div class="section-header" onclick="toggleSection('links')">
-            <span class="chevron">▶</span> Xylem Bangalore Office Dependent Links
+            <span class="chevron">▶</span> 📂 Employee Quick Links
         </div>
         <div class="section-content" id="links">
             <div class="contact">
