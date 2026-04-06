@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xylem Bangalore Contacts</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f4f6f8;
+    }
+
+    header {
+        background: white;
+        text-align: center;
+        padding: 15px;
+        border-bottom: 2px solid #0078D4;
+    }
+
+    header img {
+        max-width: 180px;
+        height: auto;
+    }
+
+    header h2 {
+        margin-top: 10px;
+        color: #0078D4;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .section {
+        background: white;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .section-header {
+        padding: 15px;
+        background: #e6f0fa;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .section-content {
+        display: none;
+        padding: 10px 15px;
+    }
+
+    .contact {
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    a {
+        text-decoration: none;
+        color: #0078D4;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .links {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 15px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+</style>
+
+<script>
+function toggleSection(id) {
+    var content = document.getElementById(id);
+    content.style.display = content.style.display === "block" ? "none" : "block";
+}
+
+// Open Teams chat if possible
+function openTeams(email) {
+    window.location.href = "msteams:/l/chat/0/0?users=" + email;
+
+    // fallback to email
+    setTimeout(function () {
+        window.location.href = "mailto:" + email;
+    }, 1500);
+}
+</script>
+
+</head>
+
+<body>
+
+<header>
+    <!-- Add your logo file in same folder and name it logo.png -->
+    <img src="logo.png" alt="Company Logo">
+    <h2>Xylem Bangalore Office Contacts</h2>
+</header>
+
+<div class="container">
+
+    <!-- ADMIN -->
+    <div class="section">
+        <div class="section-header" onclick="toggleSection('admin')">
+            Admin Department
+        </div>
+        <div class="section-content" id="admin">
+
+            <div class="contact">
+                <b>Admin 1</b><br>
+                📞 <a href="tel:+919876543210">+91 9876543210</a><br>
+                📧 <a href="#" onclick="openTeams('admin1@company.com')">admin1@company.com</a>
+            </div>
+
+            <div class="contact">
+                <b>Admin 2</b><br>
+                📞 <a href="tel:+919812345678">+91 9812345678</a><br>
+                📧 <a href="#" onclick="openTeams('admin2@company.com')">admin2@company.com</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- EHS -->
+    <div class="section">
+        <div class="section-header" onclick="toggleSection('ehs')">
+            EHS Department
+        </div>
+        <div class="section-content" id="ehs">
+
+            <div class="contact">
+                <b>EHS 1</b><br>
+                📞 <a href="tel:+919900112233">+91 9900112233</a><br>
+                📧 <a href="#" onclick="openTeams('ehs1@company.com')">ehs1@company.com</a>
+            </div>
+
+            <div class="contact">
+                <b>EHS 2</b><br>
+                📞 <a href="tel:+919955667788">+91 9955667788</a><br>
+                📧 <a href="#" onclick="openTeams('ehs2@company.com')">ehs2@company.com</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- IT -->
+    <div class="section">
+        <div class="section-header" onclick="toggleSection('it')">
+            IT Department
+        </div>
+        <div class="section-content" id="it">
+
+            <div class="contact">
+                <b>IT 1</b><br>
+                📞 <a href="tel:+919911223344">+91 9911223344</a><br>
+                📧 <a href="#" onclick="openTeams('it1@company.com')">it1@company.com</a>
+            </div>
+
+            <div class="contact">
+                <b>IT 2</b><br>
+                📞 <a href="tel:+919922334455">+91 9922334455</a><br>
+                📧 <a href="#" onclick="openTeams('it2@company.com')">it2@company.com</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- EXTRA LINKS -->
+    <div class="links">
+        <h3>Xylem Bangalore Office Dependent Links</h3>
+
+        🚖 Taxi Booking:<br>
+        <a href="https://your-taxi-booking-link.com" target="_blank">
+            Book Taxi
+        </a>
+        <br><br>
+
+        🍔 Lunch & Snacks Order:<br>
+        <a href="https://your-food-order-link.com" target="_blank">
+            Order Food
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
