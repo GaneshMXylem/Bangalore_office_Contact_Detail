@@ -6,6 +6,7 @@
 <title>Xylem Bangalore Contacts</title>
 
 <style>
+
     body, html {
         font-family: Arial, sans-serif;
         margin: 0;
@@ -34,6 +35,14 @@
         overflow: hidden;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
+	
+	.hr-blue{
+	border:0;
+	height:2px;
+	background-color:#0078D4;/* same blue as header */
+	margin: 0px 0; /* spacing above and below */
+	
+	}
 
     .section-header, .sub-section-header {
         padding: 15px;
@@ -109,7 +118,7 @@ function openAppOrPlayStore(packageName, fallbackUrl) {
     <!-- ADMIN Section -->
     <div class="section">
         <div class="section-header" onclick="toggleSection('admin')">
-            <span class="chevron">▶</span> 🏢 Admin
+            <span class="chevron">▶</span> Admin
         </div>
         <div class="section-content" id="admin">
             <div class="contact">
@@ -126,38 +135,17 @@ function openAppOrPlayStore(packageName, fallbackUrl) {
              <div class="contact">
                 <b>Pantry</b><br>
                <div class="contact">
-                        <b>Guru</b><br>
-                        📞 <a href="tel:+919008733149">+919008733149</a>
+                        <b>Guru</b> 📞 <a href="tel:+919008733149">+919008733149</a><br>
+                       <b>Rajasekhar</b>📞 <a href="tel:+917353726252">+917353726252</a>
                     </div>
-                    <div class="contact">
-                        <b>Rajasekhar</b><br>
-                        📞 <a href="tel:+917353726252">+917353726252</a>
-                    </div>
-            </div>
-
-            <!-- Pantry Sub-section inside Admin -->
-            <div class="sub-section">
-                <div class="sub-section-header" onclick="toggleSection('pantry')">
-                    <span class="chevron">▶</span> 🍴 Pantry
-                </div>
-                <div class="sub-section-content" id="pantry">
-                    <div class="contact">
-                        <b>Guru</b><br>
-                        📞 <a href="tel:+919008733149">+919008733149</a>
-                    </div>
-                    <div class="contact">
-                        <b>Rajasekhar</b><br>
-                        📞 <a href="tel:+917353726252">+917353726252</a>
-                    </div>
-                </div>
-            </div>
+            </div>           
         </div>
     </div>
 
     <!-- IT Section -->
     <div class="section">
         <div class="section-header" onclick="toggleSection('it')">
-            <span class="chevron">▶</span> 💻 IT
+            <span class="chevron">▶</span> IT
         </div>
         <div class="section-content" id="it">
             <div class="contact">
@@ -172,42 +160,43 @@ function openAppOrPlayStore(packageName, fallbackUrl) {
             </div>
         </div>
     </div>
-
-    <!-- EHS Section -->
+	
+	  <!-- EHS Section -->
     <div class="section">
         <div class="section-header" onclick="toggleSection('ehs')">
-            <span class="chevron">▶</span> 🦺 EHS
+            <span class="chevron">▶</span> EHS
         </div>
         <div class="section-content" id="ehs">
             <div class="contact">
                 <b>Hotnalli Kumar</b><br>
                 📞 <a href="tel:+917486037211">+917486037211</a><br>
                 ✉️ <a href="#" onclick="openTeams('Kumar.Hotnalli@xylem.com')">Kumar.Hotnalli@xylem.com</a>
-            </div>            
+            </div>
+            <div class="contact">
+                <b>BV. Sonashree</b><br>
+                📞 <a href="tel:+8749049604">+918749049604</a><br>
+                ✉️ <a href="#" onclick="openTeams('Bharath.Kumar.J@xylem.com')">sonashree.bv@xylem.com</a>
+            </div>
         </div>
     </div>
-
+    
     <!-- Employee Quick Links -->
     <div class="section">
         <div class="section-header" onclick="toggleSection('links')">
-            <span class="chevron">▶</span> 📂 Employee Quick Links
+            <span class="chevron">▶</span>Taxi Booking
         </div>
         <div class="section-content" id="links">
             <div class="contact">
                 🚖 Taxi Booking:<br>
                 <a href="https://1xylem.sharepoint.com/sites/GCCHRVisaInvitation/Lists/Cab%20Request%20Form/NewForm.aspx?Source=https%3A%2F%2F1xylem.sharepoint.com%2Fsites%2FGCCHRVisaInvitation%2FLists%2FCab%2520Request%2520Form%2FAllItems.aspx&ContentTypeId=0x0100092587F2B9052949BE521DE30D832D9900AB549CAAF22C1A4FBA54B150EB5D8575&RootFolder=&ovuser=87789cc7-933c-4e19-99b3-73a1953e3df7%2CGanesh.M%40xylem.com&OR=Teams-HL&CT=1775533604876&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNjAyMjcwNDIxNSIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D" class="action-btn" target="_blank">Book Taxi</a>
             </div>
-            <div class="contact">
-                🍔 Lunch & Snacks Order:<br>
-                <a href="#" class="action-btn"
-                   onclick="openAppOrPlayStore('com.swiggy.client','https://play.google.com/store/apps/details?id=com.swiggy.client')">
-                   Order Food
-                </a>
-            </div>
+           
         </div>
     </div>
+	<hr class="hr-blue">
 
 </div>
+
 
 <!-- Footer Office Image -->
 <div class="footer-image">
