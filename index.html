@@ -35,14 +35,13 @@
         overflow: hidden;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-	
-	.hr-blue{
-	border:0;
-	height:2px;
-	background-color:#0078D4;/* same blue as header */
-	margin: 0px 0; /* spacing above and below */
-	
-	}
+
+    .hr-blue{
+        border:0;
+        height:2px;
+        background-color:#0078D4;
+        margin: 0px 0;
+    }
 
     .section-header, .sub-section-header {
         padding: 15px;
@@ -59,25 +58,51 @@
 
     .chevron { display: inline-block; transition: transform 0.3s; }
 
-    /* Instead of max-height, use display none/block for sub-section */
     .section-content { display: none; padding: 10px 15px; }
     .section-content.open { display: block; }
-
-    .sub-section-content { display: none; padding: 10px 15px; margin-left: 20px; }
-    .sub-section-content.open { display: block; }
 
     .contact { margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #ddd; }
 
     a { text-decoration: none; color: #0078D4; }
     a:hover { text-decoration: underline; }
 
-    .action-btn { display: inline-block; padding: 6px 12px; background: #0078D4; color: white; border-radius: 4px; text-decoration: none; font-weight: bold; margin-top: 5px; }
+    .action-btn {
+        display: inline-block;
+        padding: 6px 12px;
+        background: #0078D4;
+        color: white;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
     .action-btn:hover { background: #005a9e; }
 
-    .footer-image img { width: 100%; height: auto; display: block; margin-top: 20px; border-top-left-radius: 8px; border-top-right-radius: 8px; }
+    .footer-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-top: 20px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+
+    /* ✅ NEW: Pantry layout */
+    .pantry-row{
+        display: flex;
+        gap: 40px;
+        margin-top: 5px;
+    }
+
+    .pantry-person{
+        flex: 1;
+    }
+
 </style>
 
 <script>
+
 function toggleSection(id) {
     const content = document.getElementById(id);
     const header = content.previousElementSibling;
@@ -104,8 +129,23 @@ function openAppOrPlayStore(packageName, fallbackUrl) {
     window.location.href = intentUrl;
     setTimeout(() => { window.location.href = fallbackUrl; }, 2000);
 }
+
+/* ✅ NEW: Platos cross-platform handler */
+function openPlatosApp() {
+    const ios = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    if (ios) {
+        window.location.href =
+        "https://apps.apple.com/in/app/platos-cafeteria-redefined/id1544403322";
+    } else {
+        window.location.href =
+        "https://play.google.com/store/apps/details?id=com.platos.platos.prod";
+    }
+}
+
 </script>
 </head>
+
 <body>
 
 <header>
@@ -115,98 +155,120 @@ function openAppOrPlayStore(packageName, fallbackUrl) {
 
 <div class="container">
 
-    <!-- ADMIN Section -->
+    <!-- ADMIN -->
     <div class="section">
         <div class="section-header" onclick="toggleSection('admin')">
             <span class="chevron">▶</span> Admin
         </div>
         <div class="section-content" id="admin">
+
             <div class="contact">
                 <b>G. Priya</b><br>
                 📞 <a href="tel:+916358179131">+916358179131</a><br>
                 ✉️ <a href="#" onclick="openTeams('Priya.G@xylem.com')">Priya.G@xylem.com</a>
             </div>
+
             <div class="contact">
                 <b>Security Bangalore</b><br>
                 📞 <a href="tel:+918066794000">+918066794000</a><br>
                 ✉️ <a href="#" onclick="openTeams('bangalore.security@xylem.com')">bangalore.security@xylem.com</a>
             </div>
 
-             <div class="contact">
+            <!-- ✅ Pantry Updated -->
+            <div class="contact">
                 <b>Pantry</b><br>
-               <div class="contact">
-                        <b>Guru</b> 📞 <a href="tel:+919008733149">+919008733149</a><br>
-                       <b>Rajasekhar</b>📞 <a href="tel:+917353726252">+917353726252</a>
+
+                <div class="pantry-row">
+
+                    <div class="pantry-person">
+                        <b>Guru</b><br>
+                        📞 <a href="tel:+919008733149">+919008733149</a>
                     </div>
-            </div>           
+
+                    <div class="pantry-person">
+                        <b>Rajasekhar</b><br>
+                        📞 <a href="tel:+917353726252">+917353726252</a>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <!-- IT Section -->
+    <!-- IT -->
     <div class="section">
         <div class="section-header" onclick="toggleSection('it')">
             <span class="chevron">▶</span> IT
         </div>
         <div class="section-content" id="it">
+
             <div class="contact">
                 <b>K. Harish Kumar</b><br>
                 📞 <a href="tel:+917227979760">+917227979760</a><br>
                 ✉️ <a href="#" onclick="openTeams('Harish.Kumar.K@xylem.com')">Harish.Kumar.K@xylem.com</a>
             </div>
+
             <div class="contact">
                 <b>J. Bharath Kumar</b><br>
                 📞 <a href="tel:+917486023960">+917486023960</a><br>
                 ✉️ <a href="#" onclick="openTeams('Bharath.Kumar.J@xylem.com')">Bharath.Kumar.J@xylem.com</a>
             </div>
+
         </div>
     </div>
-	
-	  <!-- EHS Section -->
+
+    <!-- EHS -->
     <div class="section">
         <div class="section-header" onclick="toggleSection('ehs')">
-            <span class="chevron">▶</span> EHS
+            <span class="chevron">▶</span> EHS & Lab
         </div>
         <div class="section-content" id="ehs">
+
             <div class="contact">
                 <b>Hotnalli Kumar</b><br>
                 📞 <a href="tel:+917486037211">+917486037211</a><br>
                 ✉️ <a href="#" onclick="openTeams('Kumar.Hotnalli@xylem.com')">Kumar.Hotnalli@xylem.com</a>
             </div>
+
             <div class="contact">
                 <b>BV. Sonashree</b><br>
-                📞 <a href="tel:+8749049604">+918749049604</a><br>
-                ✉️ <a href="#" onclick="openTeams('Bharath.Kumar.J@xylem.com')">sonashree.bv@xylem.com</a>
+                📞 <a href="tel:+918749049604">+918749049604</a><br>
+                ✉️ <a href="#" onclick="openTeams('sonashree.bv@xylem.com')">sonashree.bv@xylem.com</a>
             </div>
+
         </div>
     </div>
-    
-    <!-- Employee Quick Links -->
+
+    <!-- Transport -->
     <div class="section">
         <div class="section-header" onclick="toggleSection('links')">
-            <span class="chevron">▶</span>Transport & Cafeteria Services
+            <span class="chevron">▶</span> Transport & Cafeteria Services
         </div>
+
         <div class="section-content" id="links">
+
             <div class="contact">
                 🚖 Taxi Booking:<br>
-                <a href="https://1xylem.sharepoint.com/sites/GCCHRVisaInvitation/Lists/Cab%20Request%20Form/NewForm.aspx?Source=https%3A%2F%2F1xylem.sharepoint.com%2Fsites%2FGCCHRVisaInvitation%2FLists%2FCab%2520Request%2520Form%2FAllItems.aspx&ContentTypeId=0x0100092587F2B9052949BE521DE30D832D9900AB549CAAF22C1A4FBA54B150EB5D8575&RootFolder=&ovuser=87789cc7-933c-4e19-99b3-73a1953e3df7%2CGanesh.M%40xylem.com&OR=Teams-HL&CT=1775533604876&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNjAyMjcwNDIxNSIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D" class="action-btn" target="_blank">Book Taxi</a>
+                <a href="https://1xylem.sharepoint.com/sites/GCCHRVisaInvitation/Lists/Cab%20Request%20Form/NewForm.aspx"
+                   class="action-btn" target="_blank">Book Taxi</a>
             </div>
 
-			<div class="contact">
-    📱 Platos App:<br>
-    <a href="#" class="action-btn"
-       onclick="openAppOrPlayStore('com.platos.platos.prod', 'https://play.google.com/store/apps/details?id=com.platos.platos.prod')">
-       Book Lunch / Snack
-    </a>
-</div>
-           
+            <div class="contact">
+                📱 Platos App:<br>
+                <a href="#" class="action-btn" onclick="openPlatosApp()">
+                    Book Lunch / Snack
+                </a>
+            </div>
+
         </div>
     </div>
-	<hr class="hr-blue">
+
+    <hr class="hr-blue">
 
 </div>
 
-
-<!-- Footer Office Image -->
+<!-- Footer -->
 <div class="footer-image">
     <img src="office.jpg" alt="Office Image">
 </div>
